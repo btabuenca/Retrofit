@@ -17,7 +17,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ActividadPrincipal extends Activity {
+public class MainActivity extends Activity {
 
     private static final String API_BASE_URL = "https://restcountries.eu";
 
@@ -31,7 +31,7 @@ public class ActividadPrincipal extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actividad_principal);
+        setContentView(R.layout.activity_main);
         tvRespuesta = (TextView) findViewById(R.id.tvRespuesta);
         etCountryName = (EditText) findViewById(R.id.countryName);
 
@@ -46,19 +46,16 @@ public class ActividadPrincipal extends Activity {
 
 
     //
-    // A este método se llama cada vez que se hace click sobre la lupa
+    // Al hacer click sobre la lupa
     // Ver  activity_actividad_principal.xml
     //
-    public void obtenerInfoPais(View v) {
+    public void getCountryByName(View v) {
         String countryName = etCountryName.getText().toString();
-        Log.i(LOG_TAG, "obtenerInfoPais => país=" + countryName);
+        Log.i(LOG_TAG, "getCountryByName =" + countryName);
         tvRespuesta.setText("");
 
-        // Realiza la llamada por nombre
-        // Call<List<Country>> call_async = apiService.getCountryByName(countryName);
+        // Retrofit call
         Call<List<Country>> call_async = apiService.getCountryByName(countryName, "asfdasdfasdf");
-
-        // Asíncrona
         call_async.enqueue(new Callback<List<Country>>() {
 
 
@@ -71,7 +68,7 @@ public class ActividadPrincipal extends Activity {
                         contaPais++;
                         tvRespuesta.append(contaPais+ " - ["+country.getName() + "] "+country.getAltSpellings()+"\n\n");
                     }
-                    Log.i(LOG_TAG, "obtenerInfoPais => respuesta=" + countryList);
+                    Log.i(LOG_TAG, "getCountryByName => respuesta=" + countryList);
                 } else {
                     tvRespuesta.setText(getString(R.string.strError));
                     Log.i(LOG_TAG, getString(R.string.strError));
@@ -90,28 +87,20 @@ public class ActividadPrincipal extends Activity {
             }
         });
 
-
-        // Síncrona... no aquí => NetworkOnMainThreadException
-//        Call<Country> call_sync = apiService.getCountryByName("spain");
-//        try {
-//            Country country = call_sync.execute().body();
-//            Log.i(LOG_TAG, "SYNC => " + country.toString());
-//        } catch (IOException e) {
-//            Log.e(LOG_TAG, e.getMessage());
-//        }
     }
 
 
 
-    public void obtenerTodosPaises(View v) {
+    //
+    // Al hacer click sobre boton a>z
+    //
+    public void getAllCountries(View v) {
         String countryName = etCountryName.getText().toString();
-        Log.i(LOG_TAG, "obtenerInfoPais => país=" + countryName);
+        Log.i(LOG_TAG, "getAllCountries => país=" + countryName);
         tvRespuesta.setText("");
 
-        // Realiza la llamada por nombre
+        // Retrofit call
         Call<List<Country>> call_async = apiService.getAllCountries();
-
-        // Asíncrona
         call_async.enqueue(new Callback<List<Country>>() {
 
 
@@ -122,9 +111,11 @@ public class ActividadPrincipal extends Activity {
                 if (null != countryList) {
                     for (Country country : countryList) {
                         contaPais++;
+
+
                         tvRespuesta.append(contaPais+ " - ["+country.getName() + "] "+country.getAltSpellings()+"\n\n");
                     }
-                    Log.i(LOG_TAG, "obtenerInfoPais => respuesta=" + countryList);
+                    Log.i(LOG_TAG, "getAllCountries => respuesta=" + countryList);
                 } else {
                     tvRespuesta.setText(getString(R.string.strError));
                     Log.i(LOG_TAG, getString(R.string.strError));
@@ -144,7 +135,5 @@ public class ActividadPrincipal extends Activity {
         });
 
     }
-
-
 
 }
