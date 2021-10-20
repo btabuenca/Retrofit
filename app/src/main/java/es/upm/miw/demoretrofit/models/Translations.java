@@ -1,127 +1,254 @@
+
 package es.upm.miw.demoretrofit.models;
 
+import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-@SuppressWarnings("Unused")
+@Generated("jsonschema2pojo")
 public class Translations {
 
-    @SerializedName("de")
+    @SerializedName("ara")
     @Expose
-    private String de;
-    @SerializedName("es")
+    private Ara ara;
+    @SerializedName("ces")
     @Expose
-    private String es;
-    @SerializedName("fr")
+    private Ces ces;
+    @SerializedName("cym")
     @Expose
-    private String fr;
-    @SerializedName("ja")
+    private Cym cym;
+    @SerializedName("deu")
     @Expose
-    private String ja;
-    @SerializedName("it")
+    private Deu deu;
+    @SerializedName("est")
     @Expose
-    private String it;
-    @SerializedName("br")
+    private Est est;
+    @SerializedName("fin")
     @Expose
-    private String br;
-    @SerializedName("pt")
+    private Fin fin;
+    @SerializedName("fra")
     @Expose
-    private String pt;
-    @SerializedName("nl")
+    private Fra fra;
+    @SerializedName("hrv")
     @Expose
-    private String nl;
-    @SerializedName("hr")
+    private Hrv hrv;
+    @SerializedName("hun")
     @Expose
-    private String hr;
-    @SerializedName("fa")
+    private Hun hun;
+    @SerializedName("ita")
     @Expose
-    private String fa;
+    private Ita ita;
+    @SerializedName("jpn")
+    @Expose
+    private Jpn jpn;
+    @SerializedName("kor")
+    @Expose
+    private Kor kor;
+    @SerializedName("nld")
+    @Expose
+    private Nld nld;
+    @SerializedName("per")
+    @Expose
+    private Per per;
+    @SerializedName("pol")
+    @Expose
+    private Pol pol;
+    @SerializedName("por")
+    @Expose
+    private Por por;
+    @SerializedName("rus")
+    @Expose
+    private Rus rus;
+    @SerializedName("slk")
+    @Expose
+    private Slk slk;
+    @SerializedName("spa")
+    @Expose
+    private Spa__1 spa;
+    @SerializedName("swe")
+    @Expose
+    private Swe swe;
+    @SerializedName("urd")
+    @Expose
+    private Urd urd;
+    @SerializedName("zho")
+    @Expose
+    private Zho zho;
 
-    public String getDe() {
-        return de;
+    public Ara getAra() {
+        return ara;
     }
 
-    public void setDe(String de) {
-        this.de = de;
+    public void setAra(Ara ara) {
+        this.ara = ara;
     }
 
-    public String getEs() {
-        return es;
+    public Ces getCes() {
+        return ces;
     }
 
-    public void setEs(String es) {
-        this.es = es;
+    public void setCes(Ces ces) {
+        this.ces = ces;
     }
 
-    public String getFr() {
-        return fr;
+    public Cym getCym() {
+        return cym;
     }
 
-    public void setFr(String fr) {
-        this.fr = fr;
+    public void setCym(Cym cym) {
+        this.cym = cym;
     }
 
-    public String getJa() {
-        return ja;
+    public Deu getDeu() {
+        return deu;
     }
 
-    public void setJa(String ja) {
-        this.ja = ja;
+    public void setDeu(Deu deu) {
+        this.deu = deu;
     }
 
-    public String getIt() {
-        return it;
+    public Est getEst() {
+        return est;
     }
 
-    public void setIt(String it) {
-        this.it = it;
+    public void setEst(Est est) {
+        this.est = est;
     }
 
-    public String getBr() {
-        return br;
+    public Fin getFin() {
+        return fin;
     }
 
-    public void setBr(String br) {
-        this.br = br;
+    public void setFin(Fin fin) {
+        this.fin = fin;
     }
 
-    public String getPt() {
-        return pt;
+    public Fra getFra() {
+        return fra;
     }
 
-    public void setPt(String pt) {
-        this.pt = pt;
+    public void setFra(Fra fra) {
+        this.fra = fra;
     }
 
-    public String getNl() {
-        return nl;
+    public Hrv getHrv() {
+        return hrv;
     }
 
-    public void setNl(String nl) {
-        this.nl = nl;
+    public void setHrv(Hrv hrv) {
+        this.hrv = hrv;
     }
 
-    public String getHr() {
-        return hr;
+    public Hun getHun() {
+        return hun;
     }
 
-    public void setHr(String hr) {
-        this.hr = hr;
+    public void setHun(Hun hun) {
+        this.hun = hun;
     }
 
-    public String getFa() {
-        return fa;
+    public Ita getIta() {
+        return ita;
     }
 
-    public void setFa(String fa) {
-        this.fa = fa;
+    public void setIta(Ita ita) {
+        this.ita = ita;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("de", de).append("es", es).append("fr", fr).append("ja", ja).append("it", it).append("br", br).append("pt", pt).append("nl", nl).append("hr", hr).append("fa", fa).toString();
+    public Jpn getJpn() {
+        return jpn;
+    }
+
+    public void setJpn(Jpn jpn) {
+        this.jpn = jpn;
+    }
+
+    public Kor getKor() {
+        return kor;
+    }
+
+    public void setKor(Kor kor) {
+        this.kor = kor;
+    }
+
+    public Nld getNld() {
+        return nld;
+    }
+
+    public void setNld(Nld nld) {
+        this.nld = nld;
+    }
+
+    public Per getPer() {
+        return per;
+    }
+
+    public void setPer(Per per) {
+        this.per = per;
+    }
+
+    public Pol getPol() {
+        return pol;
+    }
+
+    public void setPol(Pol pol) {
+        this.pol = pol;
+    }
+
+    public Por getPor() {
+        return por;
+    }
+
+    public void setPor(Por por) {
+        this.por = por;
+    }
+
+    public Rus getRus() {
+        return rus;
+    }
+
+    public void setRus(Rus rus) {
+        this.rus = rus;
+    }
+
+    public Slk getSlk() {
+        return slk;
+    }
+
+    public void setSlk(Slk slk) {
+        this.slk = slk;
+    }
+
+    public Spa__1 getSpa() {
+        return spa;
+    }
+
+    public void setSpa(Spa__1 spa) {
+        this.spa = spa;
+    }
+
+    public Swe getSwe() {
+        return swe;
+    }
+
+    public void setSwe(Swe swe) {
+        this.swe = swe;
+    }
+
+    public Urd getUrd() {
+        return urd;
+    }
+
+    public void setUrd(Urd urd) {
+        this.urd = urd;
+    }
+
+    public Zho getZho() {
+        return zho;
+    }
+
+    public void setZho(Zho zho) {
+        this.zho = zho;
     }
 
 }

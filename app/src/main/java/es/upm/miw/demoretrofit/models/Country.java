@@ -1,30 +1,50 @@
+
 package es.upm.miw.demoretrofit.models;
 
 import java.util.List;
+import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@Generated("jsonschema2pojo")
 public class Country {
 
     @SerializedName("name")
     @Expose
-    private String name;
-    @SerializedName("topLevelDomain")
+    private Name name;
+    @SerializedName("tld")
     @Expose
-    private List<String> topLevelDomain = null;
-    @SerializedName("alpha2Code")
+    private List<String> tld = null;
+    @SerializedName("cca2")
     @Expose
-    private String alpha2Code;
-    @SerializedName("alpha3Code")
+    private String cca2;
+    @SerializedName("ccn3")
     @Expose
-    private String alpha3Code;
-    @SerializedName("callingCodes")
+    private String ccn3;
+    @SerializedName("cca3")
     @Expose
-    private List<String> callingCodes = null;
+    private String cca3;
+    @SerializedName("cioc")
+    @Expose
+    private String cioc;
+    @SerializedName("independent")
+    @Expose
+    private Boolean independent;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("unMember")
+    @Expose
+    private Boolean unMember;
+    @SerializedName("currencies")
+    @Expose
+    private Currencies currencies;
+    @SerializedName("idd")
+    @Expose
+    private Idd idd;
     @SerializedName("capital")
     @Expose
-    private String capital;
+    private List<String> capital = null;
     @SerializedName("altSpellings")
     @Expose
     private List<String> altSpellings = null;
@@ -34,97 +54,160 @@ public class Country {
     @SerializedName("subregion")
     @Expose
     private String subregion;
-    @SerializedName("population")
-    @Expose
-    private Integer population;
-    @SerializedName("latlng")
-    @Expose
-    private List<Double> latlng = null;
-    @SerializedName("demonym")
-    @Expose
-    private String demonym;
-    @SerializedName("area")
-    @Expose
-    private Double area;
-    @SerializedName("gini")
-    @Expose
-    private Double gini;
-    @SerializedName("timezones")
-    @Expose
-    private List<String> timezones = null;
-    @SerializedName("borders")
-    @Expose
-    private List<String> borders = null;
-    @SerializedName("nativeName")
-    @Expose
-    private String nativeName;
-    @SerializedName("numericCode")
-    @Expose
-    private String numericCode;
-    @SerializedName("currencies")
-    @Expose
-    private List<Currency> currencies = null;
     @SerializedName("languages")
     @Expose
-    private List<Language> languages = null;
+    private Languages languages;
     @SerializedName("translations")
     @Expose
     private Translations translations;
+    @SerializedName("latlng")
+    @Expose
+    private List<Double> latlng = null;
+    @SerializedName("landlocked")
+    @Expose
+    private Boolean landlocked;
+    @SerializedName("borders")
+    @Expose
+    private List<String> borders = null;
+    @SerializedName("area")
+    @Expose
+    private Double area;
+    @SerializedName("demonyms")
+    @Expose
+    private Demonyms demonyms;
     @SerializedName("flag")
     @Expose
     private String flag;
-    @SerializedName("regionalBlocs")
+    @SerializedName("maps")
     @Expose
-    private List<RegionalBloc> regionalBlocs = null;
-    @SerializedName("cioc")
+    private Maps maps;
+    @SerializedName("population")
     @Expose
-    private String cioc;
+    private Integer population;
+    @SerializedName("gini")
+    @Expose
+    private Gini gini;
+    @SerializedName("fifa")
+    @Expose
+    private String fifa;
+    @SerializedName("car")
+    @Expose
+    private Car car;
+    @SerializedName("timezones")
+    @Expose
+    private List<String> timezones = null;
+    @SerializedName("continents")
+    @Expose
+    private List<String> continents = null;
+    @SerializedName("flags")
+    @Expose
+    private Flags flags;
+    @SerializedName("coatOfArms")
+    @Expose
+    private CoatOfArms coatOfArms;
+    @SerializedName("startOfWeek")
+    @Expose
+    private String startOfWeek;
+    @SerializedName("capitalInfo")
+    @Expose
+    private CapitalInfo capitalInfo;
+    @SerializedName("postalCode")
+    @Expose
+    private PostalCode postalCode;
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
-    public List<String> getTopLevelDomain() {
-        return topLevelDomain;
+    public List<String> getTld() {
+        return tld;
     }
 
-    public void setTopLevelDomain(List<String> topLevelDomain) {
-        this.topLevelDomain = topLevelDomain;
+    public void setTld(List<String> tld) {
+        this.tld = tld;
     }
 
-    public String getAlpha2Code() {
-        return alpha2Code;
+    public String getCca2() {
+        return cca2;
     }
 
-    public void setAlpha2Code(String alpha2Code) {
-        this.alpha2Code = alpha2Code;
+    public void setCca2(String cca2) {
+        this.cca2 = cca2;
     }
 
-    public String getAlpha3Code() {
-        return alpha3Code;
+    public String getCcn3() {
+        return ccn3;
     }
 
-    public void setAlpha3Code(String alpha3Code) {
-        this.alpha3Code = alpha3Code;
+    public void setCcn3(String ccn3) {
+        this.ccn3 = ccn3;
     }
 
-    public List<String> getCallingCodes() {
-        return callingCodes;
+    public String getCca3() {
+        return cca3;
     }
 
-    public void setCallingCodes(List<String> callingCodes) {
-        this.callingCodes = callingCodes;
+    public void setCca3(String cca3) {
+        this.cca3 = cca3;
     }
 
-    public String getCapital() {
+    public String getCioc() {
+        return cioc;
+    }
+
+    public void setCioc(String cioc) {
+        this.cioc = cioc;
+    }
+
+    public Boolean getIndependent() {
+        return independent;
+    }
+
+    public void setIndependent(Boolean independent) {
+        this.independent = independent;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Boolean getUnMember() {
+        return unMember;
+    }
+
+    public void setUnMember(Boolean unMember) {
+        this.unMember = unMember;
+    }
+
+    public Currencies getCurrencies() {
+        return currencies;
+    }
+
+    public void setCurrencies(Currencies currencies) {
+        this.currencies = currencies;
+    }
+
+    public Idd getIdd() {
+        return idd;
+    }
+
+    public void setIdd(Idd idd) {
+        this.idd = idd;
+    }
+
+    public List<String> getCapital() {
         return capital;
     }
 
-    public void setCapital(String capital) {
+    public void setCapital(List<String> capital) {
         this.capital = capital;
     }
 
@@ -152,91 +235,11 @@ public class Country {
         this.subregion = subregion;
     }
 
-    public Integer getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(Integer population) {
-        this.population = population;
-    }
-
-    public List<Double> getLatlng() {
-        return latlng;
-    }
-
-    public void setLatlng(List<Double> latlng) {
-        this.latlng = latlng;
-    }
-
-    public String getDemonym() {
-        return demonym;
-    }
-
-    public void setDemonym(String demonym) {
-        this.demonym = demonym;
-    }
-
-    public Double getArea() {
-        return area;
-    }
-
-    public void setArea(Double area) {
-        this.area = area;
-    }
-
-    public Double getGini() {
-        return gini;
-    }
-
-    public void setGini(Double gini) {
-        this.gini = gini;
-    }
-
-    public List<String> getTimezones() {
-        return timezones;
-    }
-
-    public void setTimezones(List<String> timezones) {
-        this.timezones = timezones;
-    }
-
-    public List<String> getBorders() {
-        return borders;
-    }
-
-    public void setBorders(List<String> borders) {
-        this.borders = borders;
-    }
-
-    public String getNativeName() {
-        return nativeName;
-    }
-
-    public void setNativeName(String nativeName) {
-        this.nativeName = nativeName;
-    }
-
-    public String getNumericCode() {
-        return numericCode;
-    }
-
-    public void setNumericCode(String numericCode) {
-        this.numericCode = numericCode;
-    }
-
-    public List<Currency> getCurrencies() {
-        return currencies;
-    }
-
-    public void setCurrencies(List<Currency> currencies) {
-        this.currencies = currencies;
-    }
-
-    public List<Language> getLanguages() {
+    public Languages getLanguages() {
         return languages;
     }
 
-    public void setLanguages(List<Language> languages) {
+    public void setLanguages(Languages languages) {
         this.languages = languages;
     }
 
@@ -248,6 +251,46 @@ public class Country {
         this.translations = translations;
     }
 
+    public List<Double> getLatlng() {
+        return latlng;
+    }
+
+    public void setLatlng(List<Double> latlng) {
+        this.latlng = latlng;
+    }
+
+    public Boolean getLandlocked() {
+        return landlocked;
+    }
+
+    public void setLandlocked(Boolean landlocked) {
+        this.landlocked = landlocked;
+    }
+
+    public List<String> getBorders() {
+        return borders;
+    }
+
+    public void setBorders(List<String> borders) {
+        this.borders = borders;
+    }
+
+    public Double getArea() {
+        return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
+    }
+
+    public Demonyms getDemonyms() {
+        return demonyms;
+    }
+
+    public void setDemonyms(Demonyms demonyms) {
+        this.demonyms = demonyms;
+    }
+
     public String getFlag() {
         return flag;
     }
@@ -256,55 +299,100 @@ public class Country {
         this.flag = flag;
     }
 
-    public List<RegionalBloc> getRegionalBlocs() {
-        return regionalBlocs;
+    public Maps getMaps() {
+        return maps;
     }
 
-    public void setRegionalBlocs(List<RegionalBloc> regionalBlocs) {
-        this.regionalBlocs = regionalBlocs;
+    public void setMaps(Maps maps) {
+        this.maps = maps;
     }
 
-    public String getCioc() {
-        return cioc;
+    public Integer getPopulation() {
+        return population;
     }
 
-    public void setCioc(String cioc) {
-        this.cioc = cioc;
+    public void setPopulation(Integer population) {
+        this.population = population;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Country{" +
-//                "name='" + name + '\'' +
-//                ", topLevelDomain=" + topLevelDomain +
-//                ", alpha2Code='" + alpha2Code + '\'' +
-//                ", alpha3Code='" + alpha3Code + '\'' +
-//                ", callingCodes=" + callingCodes +
-//                ", capital='" + capital + '\'' +
-//                ", altSpellings=" + altSpellings +
-//                ", region='" + region + '\'' +
-//                ", subregion='" + subregion + '\'' +
-//                ", population=" + population +
-//                ", latlng=" + latlng +
-//                ", demonym='" + demonym + '\'' +
-//                ", area=" + area +
-//                ", gini=" + gini +
-//                ", timezones=" + timezones +
-//                ", borders=" + borders +
-//                ", nativeName='" + nativeName + '\'' +
-//                ", numericCode='" + numericCode + '\'' +
-//                ", currencies=" + currencies +
-//                ", languages=" + languages +
-//                ", translations=" + translations +
-//                ", flag='" + flag + '\'' +
-//                ", regionalBlocs=" + regionalBlocs +
-//                ", cioc='" + cioc + '\'' +
-//                '}';
-//    }
+    public Gini getGini() {
+        return gini;
+    }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("name", name).append("topLevelDomain", topLevelDomain).append("alpha2Code", alpha2Code).append("alpha3Code", alpha3Code).append("callingCodes", callingCodes).append("capital", capital).append("altSpellings", altSpellings).append("region", region).append("subregion", subregion).append("population", population).append("latlng", latlng).append("demonym", demonym).append("area", area).append("gini", gini).append("timezones", timezones).append("borders", borders).append("nativeName", nativeName).append("numericCode", numericCode).append("currencies", currencies).append("languages", languages).append("translations", translations).append("flag", flag).append("regionalBlocs", regionalBlocs).append("cioc", cioc).toString();
+    public void setGini(Gini gini) {
+        this.gini = gini;
+    }
+
+    public String getFifa() {
+        return fifa;
+    }
+
+    public void setFifa(String fifa) {
+        this.fifa = fifa;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public List<String> getTimezones() {
+        return timezones;
+    }
+
+    public void setTimezones(List<String> timezones) {
+        this.timezones = timezones;
+    }
+
+    public List<String> getContinents() {
+        return continents;
+    }
+
+    public void setContinents(List<String> continents) {
+        this.continents = continents;
+    }
+
+    public Flags getFlags() {
+        return flags;
+    }
+
+    public void setFlags(Flags flags) {
+        this.flags = flags;
+    }
+
+    public CoatOfArms getCoatOfArms() {
+        return coatOfArms;
+    }
+
+    public void setCoatOfArms(CoatOfArms coatOfArms) {
+        this.coatOfArms = coatOfArms;
+    }
+
+    public String getStartOfWeek() {
+        return startOfWeek;
+    }
+
+    public void setStartOfWeek(String startOfWeek) {
+        this.startOfWeek = startOfWeek;
+    }
+
+    public CapitalInfo getCapitalInfo() {
+        return capitalInfo;
+    }
+
+    public void setCapitalInfo(CapitalInfo capitalInfo) {
+        this.capitalInfo = capitalInfo;
+    }
+
+    public PostalCode getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(PostalCode postalCode) {
+        this.postalCode = postalCode;
     }
 
 }

@@ -8,9 +8,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.cert.CertificateException;
 import java.util.List;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 import es.upm.miw.demoretrofit.models.Country;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends Activity {
 
-    private static final String API_BASE_URL = "https://restcountries.eu";
+    private static final String API_BASE_URL = "http://restcountries.com";
 
     private static final String LOG_TAG = "MiW";
 
@@ -36,13 +45,21 @@ public class MainActivity extends Activity {
         etCountryName = (EditText) findViewById(R.id.countryName);
 
         // btb added for retrofit
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(getUnsafeOkHttpClient())
                 .build();
 
+
         apiService = retrofit.create(ICountryRESTAPIService.class);
+
+
     }
+
+
 
 
     //
@@ -55,7 +72,7 @@ public class MainActivity extends Activity {
         tvRespuesta.setText("");
 
         // Retrofit call
-        Call<List<Country>> call_async = apiService.getCountryByName(countryName, "asfdasdfasdf");
+        Call<List<Country>> call_async = apiService.getCountryByName(countryName);
         call_async.enqueue(new Callback<List<Country>>() {
 
 
@@ -66,9 +83,10 @@ public class MainActivity extends Activity {
                 if (null != countryList) {
                     for (Country country : countryList) {
                         contaPais++;
-                        tvRespuesta.append(contaPais+ " - ["+country.getName() + "] "+country.getAltSpellings()+"\n\n");
+                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] \n\n");
+                        Log.i(LOG_TAG, "getCountryByName => respuesta=" + country.getName().getCommon());
                     }
-                    Log.i(LOG_TAG, "getCountryByName => respuesta=" + countryList);
+
                 } else {
                     tvRespuesta.setText(getString(R.string.strError));
                     Log.i(LOG_TAG, getString(R.string.strError));
@@ -103,7 +121,6 @@ public class MainActivity extends Activity {
         Call<List<Country>> call_async = apiService.getAllCountries();
         call_async.enqueue(new Callback<List<Country>>() {
 
-
             @Override
             public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
                 List<Country> countryList = response.body();
@@ -111,9 +128,7 @@ public class MainActivity extends Activity {
                 if (null != countryList) {
                     for (Country country : countryList) {
                         contaPais++;
-
-
-                        tvRespuesta.append(contaPais+ " - ["+country.getName() + "] "+country.getAltSpellings()+"\n\n");
+                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] \n\n");
                     }
                     Log.i(LOG_TAG, "getAllCountries => respuesta=" + countryList);
                 } else {
@@ -134,6 +149,50 @@ public class MainActivity extends Activity {
             }
         });
 
+    }
+
+
+
+    private static OkHttpClient getUnsafeOkHttpClient() {
+        try {
+            // Create a trust manager that does not validate certificate chains
+            final TrustManager[] trustAllCerts = new TrustManager[] {
+                    new X509TrustManager() {
+                        @Override
+                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                            return new java.security.cert.X509Certificate[]{};
+                        }
+                    }
+            };
+
+            // Install the all-trusting trust manager
+            final SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+            // Create an ssl socket factory with our all-trusting manager
+            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager)trustAllCerts[0]);
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
+
+            OkHttpClient okHttpClient = builder.build();
+            return okHttpClient;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
