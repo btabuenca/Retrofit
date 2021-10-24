@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,13 +27,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import com.squareup.picasso.Picasso;
+
 public class MainActivity extends Activity {
 
-    private static final String API_BASE_URL = "http://restcountries.com";
+    private static final String API_BASE_URL = "https://restcountries.com";
 
     private static final String LOG_TAG = "MiW";
 
     private TextView tvRespuesta;
+    private ImageView ivRespuesta;
     private EditText etCountryName;
 
     private ICountryRESTAPIService apiService;
@@ -42,17 +46,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvRespuesta = (TextView) findViewById(R.id.tvRespuesta);
+        ivRespuesta = (ImageView) findViewById(R.id.ivRespuesta);
         etCountryName = (EditText) findViewById(R.id.countryName);
 
         // btb added for retrofit
-
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getUnsafeOkHttpClient())
                 .build();
-
 
         apiService = retrofit.create(ICountryRESTAPIService.class);
 
@@ -75,7 +77,6 @@ public class MainActivity extends Activity {
         Call<List<Country>> call_async = apiService.getCountryByName(countryName);
         call_async.enqueue(new Callback<List<Country>>() {
 
-
             @Override
             public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
                 List<Country> countryList = response.body();
@@ -83,7 +84,9 @@ public class MainActivity extends Activity {
                 if (null != countryList) {
                     for (Country country : countryList) {
                         contaPais++;
-                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] \n\n");
+                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] "+country.getRegion()+" | "+country.getCapital().get(0).toString()+" | "+country.getPopulation().toString()+" \n\n");
+                        //tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] "+country.getRegion()+" | "+country.getCapital().get(0).toString()+" | "+ country.getFlags().getPng()+" \n\n");
+                        Picasso.get().load(country.getFlags().getPng()).into(ivRespuesta);
                         Log.i(LOG_TAG, "getCountryByName => respuesta=" + country.getName().getCommon());
                     }
 
