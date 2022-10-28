@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
                 if (null != countryList) {
                     for (Country country : countryList) {
                         contaPais++;
-                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] "+country.getRegion()+" | "+country.getCapital().get(0).toString()+" | "+country.getPopulation().toString()+" \n\n");
+                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] "+country.getRegion()+" | "+country.getCapital().get(0).toString()+" | "+country.getPopulation().toString()+" "+country.getFlag()+" \n\n");
                         //tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] "+country.getRegion()+" | "+country.getCapital().get(0).toString()+" | "+ country.getFlags().getPng()+" \n\n");
                         Picasso.get().load(country.getFlags().getPng()).into(ivRespuesta);
                         Log.i(LOG_TAG, "getCountryByName => respuesta=" + country.getName().getCommon());
@@ -131,7 +131,7 @@ public class MainActivity extends Activity {
                 if (null != countryList) {
                     for (Country country : countryList) {
                         contaPais++;
-                        tvRespuesta.append(contaPais+ ".["+country.getName().getCommon() + "] \n\n");
+                        tvRespuesta.append(country.getFlag()+"  "+contaPais+".["+country.getName().getCommon() + "] \n\n");
                     }
                     Log.i(LOG_TAG, "getAllCountries => respuesta=" + countryList);
                 } else {
