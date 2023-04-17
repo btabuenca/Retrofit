@@ -57,11 +57,7 @@ public class MainActivity extends Activity {
                 .build();
 
         apiService = retrofit.create(ICountryRESTAPIService.class);
-
-
     }
-
-
 
 
     //
